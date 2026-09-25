@@ -270,7 +270,7 @@ footer p {
 }
 
 footer a {
-  color: #b71c1c;
+  color: #ccc;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;

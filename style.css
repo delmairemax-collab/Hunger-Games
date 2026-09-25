@@ -18,12 +18,46 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Défilement fluide quand on clique sur un lien qui pointe vers une ancre
+   de la page (confort de navigation) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Animations ===== */
+/* Petite apparition en fondu + léger glissement vers le haut, utilisée au
+   chargement de la page pour rendre le site plus vivant */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Légère pulsation lumineuse sur le titre principal */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(183, 28, 28, 0.4);
+  }
+
+  50% {
+    text-shadow: 0 0 22px rgba(183, 28, 28, 0.85);
+  }
+}
+
 header {
   text-align: center;
   padding: 60px 20px;
   background-image: url(Images/Entète.png);
-  background-size: 100%;
   border-bottom: 3px solid #b71c1c;
+  animation: fadeInUp 0.8s ease both;
 }
 
 header h1 {
@@ -31,6 +65,7 @@ header h1 {
   letter-spacing: 4px;
   text-transform: uppercase;
   color: #b71c1c;
+  animation: pulseGlow 3s ease-in-out infinite;
 }
 
 header p {
@@ -44,6 +79,8 @@ nav {
 }
 
 nav a {
+  position: relative;
+  /* sert de repère pour positionner le soulignement animé (::after) */
   color: #f0f0f0;
   text-decoration: none;
   text-transform: uppercase;
@@ -51,12 +88,28 @@ nav a {
   font-size: 0.9rem;
   margin: 0 15px;
   padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+/* Barre rouge invisible sous chaque lien, qui grandit de gauche à droite
+   au survol grâce à la transition sur width */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #b71c1c;
+  transition: width 0.3s ease;
 }
 
 nav a:hover {
-  border-bottom: 2px solid #b71c1c;
+  color: #ff6b6b;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 main {
@@ -64,6 +117,8 @@ main {
   margin: 0 auto;
   /* centre le contenu horizontalement */
   padding: 40px 20px;
+  animation: fadeInUp 0.8s ease 0.15s both;
+  /* apparaît juste après le header */
 }
 
 /* Ajoute de l'espace entre deux sections qui se suivent, pour qu'un titre
@@ -121,6 +176,15 @@ section p {
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* La carte se soulève légèrement et s'illumine au passage de la souris */
+.personnage:hover,
+.district:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(183, 28, 28, 0.35);
+  border-color: #b71c1c;
 }
 
 .personnage img,
@@ -133,6 +197,13 @@ section p {
   border: 2px solid #b71c1c;
   background-color: #333;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.personnage:hover img,
+.district:hover img {
+  transform: scale(1.06);
+  /* léger zoom sur la photo au survol */
 }
 
 .personnage-texte h3,
@@ -199,7 +270,7 @@ footer p {
 }
 
 footer a {
-  color: #ccc;
+  color: #b71c1c;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
@@ -217,6 +288,12 @@ footer a:hover {
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tome:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(183, 28, 28, 0.3);
 }
 
 .tome h3 {
@@ -260,6 +337,13 @@ footer a:hover {
   min-width: 0;
   /* évite que le texte ne fasse déborder la carte */
   text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.film:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(183, 28, 28, 0.35);
+  border-color: #b71c1c;
 }
 
 .film img {
@@ -273,6 +357,11 @@ footer a:hover {
   border-radius: 8px;
   border: 2px solid #b71c1c;
   background-color: #333;
+  transition: transform 0.3s ease;
+}
+
+.film:hover img {
+  transform: scale(1.05);
 }
 
 .film-texte h3 {
@@ -312,6 +401,14 @@ footer a:hover {
   padding: 12px 16px;
   margin-bottom: 10px;
   font-size: 0.98rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.liste-liens li:hover {
+  transform: translateX(8px);
+  /* la ligne glisse légèrement vers la droite au survol */
+  border-color: #b71c1c;
+  background-color: #2a2a2a;
 }
 
 .liste-liens a {
@@ -323,4 +420,23 @@ footer a:hover {
 
 .liste-liens a:hover {
   border-bottom: 1px solid #b71c1c;
+}
+
+/* Tous les liens rouges du site s'illuminent légèrement au survol, en plus
+   du soulignement déjà présent sur chacun d'eux */
+.acteur a:hover,
+.film-texte a:hover,
+.liste-liens a:hover,
+footer a:hover {
+  filter: brightness(1.35);
+}
+
+/* Accessibilité : si l'utilisateur a désactivé les animations dans les
+   réglages de son système, on coupe toutes les animations/transitions du
+   site pour respecter son choix (site plus inclusif) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

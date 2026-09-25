@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunger Games — Panem & Districts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Hunger Games</h1>
+        <p>Puisse le sort vous être favorable</p>
+        <nav>
+            <!-- Chaque lien pointe vers un fichier HTML différent : c'est comme
+           ça qu'on navigue entre les pages du site -->
+            <a href="index.html">Accueil</a>
+            <a href="personnages.html">Personnages</a>
+            <a href="districts.html">Panem &amp; Districts</a>
+            <a href="infos.html">Livres &amp; Films</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="panem">
+            <h2>Panem</h2>
+            <p>
+                Panem est le pays fictif dans lequel se déroule toute la saga. Né sur les ruines de l'Amérique du Nord
+                après une catastrophe non précisée, il est composé du Capitole, la capitale toute-puissante, et de
+                13 districts qui lui fournissent chacun une ressource ou une industrie. Soixante-quatorze ans avant le
+                début de l'histoire, les districts se sont soulevés contre le Capitole. La révolte a été écrasée et le
+                District 13 officiellement rayé de la carte — même si l'on découvre plus tard qu'il existe toujours,
+                caché sous terre.
+            </p>
+        </section>
+
+        <section id="capitole">
+            <h3 class="souscat">La capitale</h3>
+            <!-- Chaque "carte" .district contient une photo (img) et un bloc de
+           texte (div.district-texte), alignés côte à côte grâce au
+           flexbox défini dans le CSS -->
+            <div class="district">
+                <img src="Images/Le Capitol.jpg" alt="Le Capitole">
+                <div class="district-texte">
+                    <h3>Le Capitole</h3>
+                    <p>
+                        Centre du pouvoir de Panem, situé dans les Montagnes Rocheuses. C'est une ville futuriste et
+                        extravagante où vit une population riche, obsédée par l'apparence et le luxe, totalement coupée
+                        de la misère des districts. C'est ici que sont organisés et retransmis les Hunger Games, et que
+                        réside le Président Snow.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="districts">
+            <h3 class="souscat">Les 13 districts</h3>
+
+            <div class="district">
+                <img src="Images/District 1.webp" alt="District 1">
+                <div class="district-texte">
+                    <h3>District 1 — Objets de luxe</h3>
+                    <p>
+                        Fabrique des articles de luxe pour le Capitole (bijoux, objets précieux). C'est l'un des
+                        districts
+                        les plus riches et privilégiés, dont les tributs sont souvent des « Carrières » entraînés depuis
+                        l'enfance pour les Jeux.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 2.webp" alt="District 2">
+                <div class="district-texte">
+                    <h3>District 2 — Maçonnerie &amp; Pacificateurs</h3>
+                    <p>
+                        Spécialisé dans la pierre et la construction, et lieu d'entraînement des Pacificateurs (les
+                        forces
+                        de l'ordre du Capitole). Comme le District 1, il produit traditionnellement des tributs «
+                        Carrières »
+                        redoutables, à l'image de Cato.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 3.webp" alt="District 3">
+                <div class="district-texte">
+                    <h3>District 3 — Électronique</h3>
+                    <p>
+                        District industriel spécialisé dans la fabrication d'appareils électroniques et de technologies.
+                        Beetee et Wiress, deux tributs particulièrement ingénieux, en sont originaires.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 4.webp" alt="District 4">
+                <div class="district-texte">
+                    <h3>District 4 — Pêche</h3>
+                    <p>
+                        District côtier vivant de la pêche, plus prospère que la majorité des autres districts. C'est le
+                        district d'origine de Finnick Odair et d'Annie Cresta.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 5.webp" alt="District 5">
+                <div class="district-texte">
+                    <h3>District 5 — Énergie</h3>
+                    <p>
+                        Produit l'électricité de Panem, notamment via un important barrage hydraulique. On en sait assez
+                        peu, si ce n'est que la tribut « Renarde » (Foxface) dans le premier film en est originaire.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 6.webp" alt="District 6">
+                <div class="district-texte">
+                    <h3>District 6 — Transports</h3>
+                    <p>
+                        Chargé de la fabrication des trains et véhicules qui permettent aux marchandises (et aux
+                        tributs)
+                        de circuler dans tout Panem.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 7.webp" alt="District 7">
+                <div class="district-texte">
+                    <h3>District 7 — Bois</h3>
+                    <p>
+                        District forestier spécialisé dans l'exploitation du bois. Johanna Mason, connue pour son
+                        franc-parler et son habileté à la hache, en est originaire.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 8.webp" alt="District 8">
+                <div class="district-texte">
+                    <h3>District 8 — Textile</h3>
+                    <p>
+                        Produit les tissus et vêtements de Panem. C'est l'un des premiers districts à se soulever
+                        ouvertement contre le Capitole au début de la rébellion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 9.webp" alt="District 9">
+                <div class="district-texte">
+                    <h3>District 9 — Céréales</h3>
+                    <p>
+                        District agricole spécialisé dans la culture des céréales, essentiel à l'alimentation de Panem.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 10.webp" alt="District 10">
+                <div class="district-texte">
+                    <h3>District 10 — Élevage</h3>
+                    <p>
+                        Chargé de l'élevage du bétail qui fournit viande et cuir au reste du pays.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 11.webp" alt="District 11">
+                <div class="district-texte">
+                    <h3>District 11 — Agriculture</h3>
+                    <p>
+                        Vaste district agricole où travaillent de nombreux ouvriers dans des conditions très dures.
+                        C'est le district d'origine de Rue et de Thresh.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 12.webp" alt="District 12">
+                <div class="district-texte">
+                    <h3>District 12 — Charbon</h3>
+                    <p>
+                        Le plus pauvre et le plus reculé des districts, situé dans les anciennes Appalaches. Ses
+                        habitants
+                        travaillent dans les mines de charbon. C'est le district d'origine de Katniss, Peeta, Gale et
+                        Haymitch.
+                    </p>
+                </div>
+            </div>
+
+            <div class="district">
+                <img src="Images/District 13.webp" alt="District 13">
+                <div class="district-texte">
+                    <h3>District 13 — Officiellement détruit</h3>
+                    <p>
+                        Présenté comme rasé par le Capitole après la première rébellion, il existe en réalité toujours,
+                        caché sous terre. Spécialisé dans le nucléaire et l'armement, il devient le quartier général de
+                        la
+                        rébellion dans « La Révolte », dirigé par la Présidente Coin.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>Site créé par Maxime Delmaire — étudiant à l'IIM Digital School (B1)</p>
+        <!-- target="_blank" ouvre le lien dans un nouvel onglet ;
+         rel="noopener noreferrer" sécurise ce lien vers un site externe -->
+        <a href="https://www.linkedin.com/in/maxime-delmaire-81095034a/" target="_blank" rel="noopener noreferrer">
+            Me retrouver sur LinkedIn
+        </a>
+    </footer>
+
+</body>
+
+</html>

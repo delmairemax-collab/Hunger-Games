@@ -1,441 +1,267 @@
-/* Réinitialise les marges/paddings par défaut du navigateur et fait en sorte
-   que padding et border soient inclus dans la largeur/hauteur (box-sizing) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 body {
   font-family: 'Georgia', serif;
   color: #f0f0f0;
-  line-height: 1.6;
+  background-color: #1a1a1a;
   background-image: url(Images/Fond.png);
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  /* l'image de fond reste fixe quand on scroll */
-  background-repeat: no-repeat;
 }
-
-/* Défilement fluide quand on clique sur un lien qui pointe vers une ancre
-   de la page (confort de navigation) */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ===== Animations ===== */
-/* Petite apparition en fondu + léger glissement vers le haut, utilisée au
-   chargement de la page pour rendre le site plus vivant */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Légère pulsation lumineuse sur le titre principal */
-@keyframes pulseGlow {
-
-  0%,
-  100% {
-    text-shadow: 0 0 8px rgba(183, 28, 28, 0.4);
-  }
-
-  50% {
-    text-shadow: 0 0 22px rgba(183, 28, 28, 0.85);
-  }
-}
-
+ 
 header {
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
   background-image: url(Images/Entète.png);
   border-bottom: 3px solid #b71c1c;
-  animation: fadeInUp 0.8s ease both;
 }
-
+ 
 header h1 {
-  font-size: 3rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+  font-size: 48px;
   color: #b71c1c;
-  animation: pulseGlow 3s ease-in-out infinite;
 }
-
+ 
 header p {
   margin-top: 10px;
   font-style: italic;
-  color: #ccc;
+  color: #cccccc;
+  text-align: center;
 }
-
+ 
 nav {
   margin-top: 20px;
 }
-
+ 
 nav a {
-  position: relative;
-  /* sert de repère pour positionner le soulignement animé (::after) */
   color: #f0f0f0;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
   margin: 0 15px;
-  padding-bottom: 4px;
-  transition: color 0.2s ease;
+  font-size: 16px;
+  transition: color 0.3s;
 }
-
-/* Barre rouge invisible sous chaque lien, qui grandit de gauche à droite
-   au survol grâce à la transition sur width */
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 2px;
-  background-color: #b71c1c;
-  transition: width 0.3s ease;
-}
-
+ 
 nav a:hover {
-  color: #ff6b6b;
+  color: #b71c1c;
 }
-
-nav a:hover::after {
-  width: 100%;
-}
-
+ 
 main {
-  max-width: 800px;
+  width: 800px;
   margin: 0 auto;
-  /* centre le contenu horizontalement */
   padding: 40px 20px;
-  animation: fadeInUp 0.8s ease 0.15s both;
-  /* apparaît juste après le header */
 }
-
-/* Ajoute de l'espace entre deux sections qui se suivent, pour qu'un titre
-   (h2) ne soit jamais collé au texte de la section précédente */
-section+section {
-  margin-top: 50px;
+ 
+.bloc {
+  margin-bottom: 50px;
 }
-
-section h2 {
+ 
+h2 {
   color: #b71c1c;
   margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   border-left: 4px solid #b71c1c;
   padding-left: 10px;
 }
-
-section p {
+ 
+p {
+  font-size: 18px;
   text-align: justify;
-  font-size: 1.05rem;
 }
-
-#personnages {
-  margin-top: 50px;
-}
-
+ 
 .souscat {
-  color: #ccc;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: #cccccc;
+  font-size: 16px;
   margin: 30px 0 15px;
-  border: none;
-  padding-left: 0;
 }
-
-.souscat:first-of-type {
-  margin-top: 0;
-  /* évite un espace inutile avant la toute première sous-catégorie */
-}
-
-#districts,
-#capitole {
-  margin-top: 10px;
-}
-
+ 
 .personnage,
 .district {
   display: flex;
-  /* aligne l'image et le texte côte à côte */
   align-items: center;
-  gap: 25px;
   background-color: #242424;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 3px 3px 8px black;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
-/* La carte se soulève légèrement et s'illumine au passage de la souris */
+ 
 .personnage:hover,
 .district:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 22px rgba(183, 28, 28, 0.35);
-  border-color: #b71c1c;
+  box-shadow: 0 8px 16px rgba(183, 28, 28, 0.4);
 }
-
+ 
 .personnage img,
 .district img {
   width: 140px;
   height: 140px;
   object-fit: cover;
-  /* recadre l'image pour qu'elle remplisse le cadre sans se déformer */
   border-radius: 8px;
   border: 2px solid #b71c1c;
-  background-color: #333;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
+  margin-right: 25px;
+  transition: transform 0.3s;
 }
-
+ 
 .personnage:hover img,
 .district:hover img {
   transform: scale(1.06);
-  /* léger zoom sur la photo au survol */
 }
-
+ 
 .personnage-texte h3,
 .district-texte h3 {
   color: #f0f0f0;
   margin-bottom: 8px;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
-
+ 
 .personnage-texte p,
 .district-texte p {
-  font-size: 0.98rem;
-  color: #ddd;
+  font-size: 16px;
+  color: #dddddd;
 }
-
-/* Ligne "Interprété par ..." ajoutée sous la description de chaque personnage */
+ 
 .acteur {
-  font-size: 0.88rem;
-  color: #aaa;
+  font-size: 14px;
+  color: #aaaaaa;
   font-style: italic;
   margin-top: 10px;
 }
-
+ 
 .acteur a {
   color: #b71c1c;
-  text-decoration: none;
-  font-style: normal;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: color 0.3s;
 }
-
+ 
 .acteur a:hover {
-  border-bottom: 1px solid #b71c1c;
+  color: #ff6b6b;
 }
-
-/* En dessous de 600px de large (mobile), on empile l'image au-dessus du
-   texte au lieu de les mettre côte à côte */
-@media (max-width: 600px) {
-
-  .personnage,
-  .district {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .bande-films {
-    flex-direction: column;
-    /* les deux cartes de la bande s'empilent sur mobile */
-  }
-}
-
+ 
 footer {
   text-align: center;
   padding: 30px 20px;
   margin-top: 60px;
   background-image: url(Images/Pied\ De\ Page.png);
   border-top: 3px solid #b71c1c;
-  font-size: 0.9rem;
-  color: #ccc;
+  font-size: 14px;
+  color: #cccccc;
 }
-
+ 
 footer p {
   margin-bottom: 8px;
+  text-align: center;
 }
-
+ 
 footer a {
-  color: #ccc;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-  /* animation douce au survol */
+  color: #cccccc;
 }
-
-footer a:hover {
-  border-bottom: 1px solid #b71c1c;
-}
-
+ 
 .tome {
   background-color: #242424;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 3px 3px 8px black;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
+ 
 .tome:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 22px rgba(183, 28, 28, 0.3);
+  box-shadow: 0 8px 16px rgba(183, 28, 28, 0.4);
 }
-
+ 
 .tome h3 {
   color: #f0f0f0;
   margin-bottom: 8px;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
-
+ 
 .tome p {
-  font-size: 0.98rem;
-  color: #ddd;
+  font-size: 16px;
+  color: #dddddd;
 }
-
-/* Une "bande" = une ligne contenant deux cartes .film côte à côte */
+ 
 .bande-films {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
-
-.bande-films:first-of-type {
-  margin-top: 20px;
-  /* petit espace entre le texte explicatif et les cadres */
-}
-
-/* Carte .film : même style que .personnage / .district (image à gauche,
-   texte à droite), mais qui se partage la largeur de sa bande avec l'autre
-   carte grâce à flex: 1 */
+ 
 .film {
-  display: flex;
-  flex-direction: column;
-  /* image en haut, texte en dessous */
-  align-items: center;
-  gap: 12px;
+  width: 48%;
   background-color: #242424;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   border-radius: 8px;
   padding: 15px;
-  flex: 1;
-  /* les deux cartes se partagent la largeur de la bande à parts égales */
-  min-width: 0;
-  /* évite que le texte ne fasse déborder la carte */
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 3px 3px 8px black;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
+ 
 .film:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 22px rgba(183, 28, 28, 0.35);
-  border-color: #b71c1c;
+  box-shadow: 0 8px 16px rgba(183, 28, 28, 0.4);
 }
-
+ 
 .film img {
-  width: 100%;
-  max-width: 220px;
-  /* affiche agrandie pour mieux la voir */
-  aspect-ratio: 2 / 3;
-  /* proportions classiques d'une affiche de film */
+  display: block;
+  width: 220px;
+  height: 330px;
   object-fit: cover;
-  /* recadre l'affiche pour qu'elle remplisse le cadre */
   border-radius: 8px;
   border: 2px solid #b71c1c;
-  background-color: #333;
-  transition: transform 0.3s ease;
+  margin: 0 auto 12px;
+  transition: transform 0.3s;
 }
-
+ 
 .film:hover img {
   transform: scale(1.05);
 }
-
+ 
 .film-texte h3 {
   color: #f0f0f0;
   margin-bottom: 6px;
-  font-size: 1.05rem;
+  font-size: 18px;
 }
-
+ 
 .film-texte p {
-  font-size: 0.88rem;
-  color: #ddd;
-  text-align: center;
-  /* la règle générale "section p" met le texte en justifié, on force le centrage ici */
+  font-size: 14px;
+  color: #dddddd;
 }
-
+ 
 .film-texte a {
   color: #b71c1c;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: color 0.3s;
 }
-
+ 
 .film-texte a:hover {
-  border-bottom: 1px solid #b71c1c;
+  color: #ff6b6b;
 }
-
+ 
 .liste-liens {
   list-style: none;
-  /* enlève les puces par défaut des <li> */
   margin: 15px 0 25px;
 }
-
+ 
 .liste-liens li {
   background-color: #242424;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   border-radius: 8px;
   padding: 12px 16px;
   margin-bottom: 10px;
-  font-size: 0.98rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  font-size: 16px;
 }
-
-.liste-liens li:hover {
-  transform: translateX(8px);
-  /* la ligne glisse légèrement vers la droite au survol */
-  border-color: #b71c1c;
-  background-color: #2a2a2a;
-}
-
+ 
 .liste-liens a {
   color: #b71c1c;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: color 0.3s;
 }
-
+ 
 .liste-liens a:hover {
-  border-bottom: 1px solid #b71c1c;
+  color: #ff6b6b;
 }
-
-/* Tous les liens rouges du site s'illuminent légèrement au survol, en plus
-   du soulignement déjà présent sur chacun d'eux */
-.acteur a:hover,
-.film-texte a:hover,
-.liste-liens a:hover,
-footer a:hover {
-  filter: brightness(1.35);
-}
-
-/* Accessibilité : si l'utilisateur a désactivé les animations dans les
-   réglages de son système, on coupe toutes les animations/transitions du
-   site pour respecter son choix (site plus inclusif) */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
+ 
